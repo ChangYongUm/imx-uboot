@@ -617,17 +617,6 @@ dtb-$(CONFIG_TARGET_QCS404EVB) += qcs404-evb.dtb
 
 dtb-$(CONFIG_TARGET_STEMMY) += ste-ux500-samsung-stemmy.dtb
 
-dtb-$(CONFIG_STM32F4) += stm32f429-disco.dtb \
-	stm32429i-eval.dtb \
-	stm32f469-disco.dtb
-
-dtb-$(CONFIG_STM32F7) += stm32f746-disco.dtb \
-	stm32f769-disco.dtb \
-	stm32746g-eval.dtb
-dtb-$(CONFIG_STM32H7) += stm32h743i-disco.dtb \
-	stm32h743i-eval.dtb \
-	stm32h750i-art-pi.dtb
-
 dtb-$(CONFIG_MACH_SUNIV) += \
 	suniv-f1c100s-licheepi-nano.dtb
 dtb-$(CONFIG_MACH_SUN4I) += \
@@ -1364,93 +1353,8 @@ dtb-$(CONFIG_TARGET_SAMA5D4_XPLAINED) += \
 dtb-$(CONFIG_TARGET_VINCO) += \
 	at91-vinco.dtb
 
-dtb-$(CONFIG_ARCH_BCM283X) += \
-	bcm2835-rpi-a.dtb \
-	bcm2835-rpi-a-plus.dtb \
-	bcm2835-rpi-b.dtb \
-	bcm2835-rpi-b-plus.dtb \
-	bcm2835-rpi-b-rev2.dtb \
-	bcm2835-rpi-cm1-io1.dtb \
-	bcm2835-rpi-zero.dtb \
-	bcm2835-rpi-zero-w.dtb\
-	bcm2836-rpi-2-b.dtb \
-	bcm2837-rpi-3-a-plus.dtb \
-	bcm2837-rpi-3-b.dtb \
-	bcm2837-rpi-3-b-plus.dtb \
-	bcm2837-rpi-cm3-io3.dtb \
-	bcm2711-rpi-4-b.dtb
-
-dtb-$(CONFIG_TARGET_BCMNS) += ns-board.dtb
-
-dtb-$(CONFIG_TARGET_BCMNS3) += ns3-board.dtb
-
-dtb-$(CONFIG_ARCH_BCMSTB) += bcm7xxx.dtb
-
-dtb-$(CONFIG_BCM47622) += \
-	bcm947622.dtb
-dtb-$(CONFIG_BCM4908) += \
-	bcm94908.dtb
-dtb-$(CONFIG_BCM4912) += \
-	bcm94912.dtb
-dtb-$(CONFIG_BCM63138) += \
-	bcm963138.dtb
-dtb-$(CONFIG_BCM63146) += \
-	bcm963146.dtb
-dtb-$(CONFIG_BCM63148) += \
-	bcm963148.dtb
-dtb-$(CONFIG_BCM63158) += \
-	bcm963158.dtb
-dtb-$(CONFIG_BCM63178) += \
-	bcm963178.dtb
-dtb-$(CONFIG_BCM6756) += \
-	bcm96756.dtb
-dtb-$(CONFIG_BCM6813) += \
-	bcm96813.dtb
-dtb-$(CONFIG_BCM6846) += \
-	bcm96846.dtb
-dtb-$(CONFIG_BCM6855) += \
-	bcm96855.dtb \
-	bcm96753ref.dtb
-dtb-$(CONFIG_BCM6856) += \
-	bcm96856.dtb \
-	bcm968360bg.dtb
-dtb-$(CONFIG_BCM6858) += \
-	bcm96858.dtb \
-	bcm968580xref.dtb
-dtb-$(CONFIG_BCM6878) += \
-	bcm96878.dtb
-
-dtb-$(CONFIG_ASPEED_AST2500) += ast2500-evb.dtb
-dtb-$(CONFIG_ASPEED_AST2600) += ast2600-evb.dtb
-
 dtb-$(CONFIG_ARCH_STI) += stih410-b2260.dtb
 
-dtb-$(CONFIG_STM32MP13X) += \
-	stm32mp135f-dk.dtb
-
-dtb-$(CONFIG_STM32MP15X) += \
-	stm32mp157a-dk1.dtb \
-	stm32mp157a-dk1-scmi.dtb \
-	stm32mp157a-icore-stm32mp1-ctouch2.dtb \
-	stm32mp157a-icore-stm32mp1-edimm2.2.dtb \
-	stm32mp157a-microgea-stm32mp1-microdev2.0.dtb \
-	stm32mp157a-microgea-stm32mp1-microdev2.0-of7.dtb \
-	stm32mp157c-dk2.dtb \
-	stm32mp157c-dk2-scmi.dtb \
-	stm32mp157c-ed1.dtb \
-	stm32mp157c-ed1-scmi.dtb \
-	stm32mp157c-ev1.dtb \
-	stm32mp157c-ev1-scmi.dtb \
-	stm32mp157c-odyssey.dtb \
-	stm32mp15xx-dhcom-drc02.dtb \
-	stm32mp15xx-dhcom-pdk2.dtb \
-	stm32mp15xx-dhcom-picoitx.dtb \
-	stm32mp15xx-dhcor-avenger96.dtb \
-	stm32mp15xx-dhcor-drc-compact.dtb \
-	stm32mp15xx-dhcor-testbench.dtb
-
-dtb-$(CONFIG_STM32MP25X) += \
-	stm32mp257f-ev1.dtb
 
 dtb-$(CONFIG_SOC_K3_AM654) += \
 	k3-am654-base-board.dtb \
