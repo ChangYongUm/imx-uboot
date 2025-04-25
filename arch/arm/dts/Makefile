@@ -1,37 +1,13 @@
 # SPDX-License-Identifier: GPL-2.0+
 
-dtb-$(CONFIG_TARGET_SMARTWEB) += at91sam9260-smartweb.dtb
-dtb-$(CONFIG_TARGET_TAURUS) += at91sam9g20-taurus.dtb
-dtb-$(CONFIG_TARGET_CORVUS) += at91sam9g45-corvus.dtb
-dtb-$(CONFIG_TARGET_GURNARD) += at91sam9g45-gurnard.dtb
 
 dtb-$(CONFIG_TARGET_SMDKC100) += s5pc1xx-smdkc100.dtb
 dtb-$(CONFIG_TARGET_S5P_GONI) += s5pc1xx-goni.dtb
-dtb-$(CONFIG_ARCH_EXYNOS4) += exynos4210-origen.dtb \
-	exynos4210-smdkv310.dtb \
-	exynos4210-universal_c210.dtb \
-	exynos4210-trats.dtb \
-	exynos4412-trats2.dtb \
-	exynos4412-odroid.dtb
 
 dtb-$(CONFIG_TARGET_HIKEY) += hi6220-hikey.dtb
 dtb-$(CONFIG_TARGET_HIKEY960) += hi3660-hikey960.dtb
 
 dtb-$(CONFIG_TARGET_POPLAR) += hi3798cv200-poplar.dtb
-
-dtb-$(CONFIG_ARCH_EXYNOS5) += exynos5250-arndale.dtb \
-	exynos5250-snow.dtb \
-	exynos5250-spring.dtb \
-	exynos5250-smdk5250.dtb \
-	exynos5420-smdk5420.dtb \
-	exynos5420-peach-pit.dtb \
-	exynos5800-peach-pi.dtb \
-	exynos5422-odroidxu3.dtb
-dtb-$(CONFIG_EXYNOS7420) += exynos7420-espresso7420.dtb
-dtb-$(CONFIG_TARGET_A5Y17LTE) += exynos78x0-axy17lte.dtb
-dtb-$(CONFIG_TARGET_A3Y17LTE) += exynos78x0-axy17lte.dtb
-dtb-$(CONFIG_TARGET_A7Y17LTE) += exynos78x0-axy17lte.dtb
-dtb-$(CONFIG_TARGET_E850_96) += exynos850-e850-96.dtb
 
 dtb-$(CONFIG_ARCH_APPLE) += \
 	t8103-j274.dtb \
