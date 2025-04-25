@@ -21,36 +21,6 @@ dtb-$(CONFIG_ARCH_DAVINCI) += \
 	da850-lcdk.dtb \
 	da850-lego-ev3.dtb
 
-dtb-$(CONFIG_ARCH_KIRKWOOD) += \
-	kirkwood-atl-sbx81lifkw.dtb \
-	kirkwood-atl-sbx81lifxcat.dtb \
-	kirkwood-blackarmor-nas220.dtb \
-	kirkwood-d2net.dtb \
-	kirkwood-dns325.dtb \
-	kirkwood-dockstar.dtb \
-	kirkwood-dreamplug.dtb \
-	kirkwood-ds109.dtb \
-	kirkwood-goflexnet.dtb \
-	kirkwood-guruplug-server-plus.dtb \
-	kirkwood-ib62x0.dtb \
-	kirkwood-iconnect.dtb \
-	kirkwood-is2.dtb \
-	kirkwood-lsxhl.dtb \
-	kirkwood-lschlv2.dtb \
-	kirkwood-net2big.dtb \
-	kirkwood-ns2.dtb \
-	kirkwood-ns2lite.dtb \
-	kirkwood-ns2max.dtb \
-	kirkwood-ns2mini.dtb \
-	kirkwood-nsa310s.dtb \
-	kirkwood-nsa325.dtb \
-	kirkwood-openrd-base.dtb \
-	kirkwood-openrd-client.dtb \
-	kirkwood-openrd-ultimate.dtb \
-	kirkwood-pogo_e02.dtb \
-	kirkwood-pogoplug-series-4.dtb \
-	kirkwood-sheevaplug.dtb
-
 dtb-$(CONFIG_MACH_S900) += \
 	bubblegum_96.dtb
 dtb-$(CONFIG_MACH_S700) += \
@@ -75,154 +45,13 @@ dtb-$(CONFIG_ROCKCHIP_RV1126) += \
 dtb-$(CONFIG_ARCH_S5P4418) += \
 	s5p4418-nanopi2.dtb
 
-dtb-$(CONFIG_ARCH_MESON) += \
-	meson-a1-ad401.dtb \
-	meson-axg-s400.dtb \
-	meson-axg-jethome-jethub-j100.dtb \
-	meson-gxbb-kii-pro.dtb \
-	meson-gxbb-nanopi-k2.dtb \
-	meson-gxbb-odroidc2.dtb \
-	meson-gxbb-nanopi-k2.dtb \
-	meson-gxbb-p200.dtb \
-	meson-gxbb-p201.dtb \
-	meson-gxbb-wetek-hub.dtb \
-	meson-gxbb-wetek-play2.dtb \
-	meson-gxl-s805x-libretech-ac.dtb \
-	meson-gxl-s905d-libretech-pc.dtb \
-	meson-gxl-s905w-jethome-jethub-j80.dtb \
-	meson-gxl-s905x-khadas-vim.dtb \
-	meson-gxl-s905x-libretech-cc.dtb \
-	meson-gxl-s905x-libretech-cc-v2.dtb \
-	meson-gxl-s905x-p212.dtb \
-	meson-gxm-gt1-ultimate.dtb \
-	meson-gxm-khadas-vim2.dtb \
-	meson-gxm-s912-libretech-pc.dtb \
-	meson-gxm-wetek-core2.dtb \
-	meson-g12a-radxa-zero.dtb \
-	meson-g12a-sei510.dtb \
-	meson-g12a-u200.dtb \
-	meson-g12b-a311d-bananapi-m2s.dtb \
-	meson-g12b-a311d-khadas-vim3.dtb \
-	meson-g12b-bananapi-cm4-cm4io.dtb \
-	meson-g12b-gsking-x.dtb \
-	meson-g12b-gtking.dtb \
-	meson-g12b-gtking-pro.dtb \
-	meson-g12b-odroid-go-ultra.dtb \
-	meson-g12b-odroid-n2.dtb \
-	meson-g12b-odroid-n2l.dtb \
-	meson-g12b-odroid-n2-plus.dtb \
-	meson-g12b-radxa-zero2.dtb \
-	meson-sm1-bananapi-m2-pro.dtb \
-	meson-sm1-bananapi-m5.dtb \
-	meson-sm1-khadas-vim3l.dtb \
-	meson-sm1-odroid-c4.dtb \
-	meson-sm1-odroid-hc4.dtb \
-	meson-sm1-sei610.dtb
 
-ifdef CONFIG_ARMADA_32BIT
-ifdef CONFIG_ARMADA_375
-dtb-$(CONFIG_ARCH_MVEBU) +=			\
-	armada-375-db.dtb
-else
-dtb-$(CONFIG_ARCH_MVEBU) +=			\
-	armada-385-atl-x530.dtb			\
-	armada-385-atl-x530DP.dtb		\
-	armada-385-db-88f6820-amc.dtb		\
-	armada-385-synology-ds116.dtb		\
-	armada-385-thecus-n2350.dtb		\
-	armada-385-turris-omnia.dtb		\
-	armada-388-clearfog.dtb			\
-	armada-388-gp.dtb			\
-	armada-388-helios4.dtb			\
-	armada-38x-controlcenterdc.dtb		\
-	armada-xp-crs305-1g-4s.dtb		\
-	armada-xp-crs305-1g-4s-bit.dtb		\
-	armada-xp-crs326-24g-2s.dtb		\
-	armada-xp-crs326-24g-2s-bit.dtb		\
-	armada-xp-crs328-4c-20s-4s.dtb		\
-	armada-xp-crs328-4c-20s-4s-bit.dtb	\
-	armada-xp-db-xc3-24g4xg.dtb		\
-	armada-xp-gp.dtb			\
-	armada-xp-maxbcm.dtb			\
-	armada-xp-synology-ds414.dtb		\
-	armada-xp-theadorable.dtb
-endif
-else
-dtb-$(CONFIG_ARCH_MVEBU) +=			\
-	armada-3720-db.dtb			\
-	armada-3720-espressobin.dtb		\
-	armada-3720-ripe-atlas.dtb		\
-	armada-3720-turris-mox.dtb		\
-	armada-3720-eDPU.dtb			\
-	armada-3720-uDPU.dtb			\
-	armada-7040-db-nand.dtb			\
-	armada-7040-db.dtb			\
-	armada-8040-clearfog-gt-8k.dtb		\
-	armada-8040-db.dtb			\
-	armada-8040-mcbin.dtb			\
-	armada-8040-puzzle-m801.dtb		\
-	cn9130-db-A.dtb				\
-	cn9130-db-B.dtb				\
-	cn9131-db-A.dtb				\
-	cn9131-db-B.dtb				\
-	cn9132-db-A.dtb				\
-	cn9132-db-B.dtb				\
-	cn9130-crb-A.dtb			\
-	cn9130-crb-B.dtb			\
-	ac5-98dx35xx-rd.dtb			\
-	ac5-98dx35xx-atl-x240.dtb
-endif
 
 dtb-$(CONFIG_ARCH_SYNQUACER) += synquacer-sc2a11-developerbox.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_LD11) += \
-	uniphier-ld11-global.dtb \
-	uniphier-ld11-ref.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_LD20) += \
-	uniphier-ld20-akebi96.dtb \
-	uniphier-ld20-global.dtb \
-	uniphier-ld20-ref.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_LD4) += \
-	uniphier-ld4-ref.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_LD6B) += \
-	uniphier-ld6b-ref.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_PRO4) += \
-	uniphier-pro4-ace.dtb \
-	uniphier-pro4-ref.dtb \
-	uniphier-pro4-sanji.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_PRO5) += \
-	uniphier-pro5-4kbox.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_PXS2) += \
-	uniphier-pxs2-gentil.dtb \
-	uniphier-pxs2-vodka.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_PXS3) += \
-	uniphier-pxs3-ref.dtb
-dtb-$(CONFIG_ARCH_UNIPHIER_SLD8) += \
-	uniphier-sld8-ref.dtb
 
 
 dtb-$(CONFIG_TARGET_THUNDERX_88XX) += thunderx-88xx.dtb
 
-dtb-$(CONFIG_ARCH_SOCFPGA) +=				\
-	socfpga_agilex_socdk.dtb			\
-	socfpga_arria5_secu1.dtb			\
-	socfpga_arria5_socdk.dtb			\
-	socfpga_arria10_chameleonv3_270_2.dtb		\
-	socfpga_arria10_chameleonv3_270_3.dtb		\
-	socfpga_arria10_chameleonv3_480_2.dtb		\
-	socfpga_arria10_socdk_sdmmc.dtb			\
-	socfpga_cyclone5_mcvevk.dtb			\
-	socfpga_cyclone5_is1.dtb			\
-	socfpga_cyclone5_socdk.dtb			\
-	socfpga_cyclone5_dbm_soc1.dtb			\
-	socfpga_cyclone5_de0_nano_soc.dtb		\
-	socfpga_cyclone5_de1_soc.dtb			\
-	socfpga_cyclone5_de10_nano.dtb			\
-	socfpga_cyclone5_sockit.dtb			\
-	socfpga_cyclone5_socrates.dtb			\
-	socfpga_cyclone5_sr1500.dtb			\
-	socfpga_cyclone5_vining_fpga.dtb		\
-	socfpga_n5x_socdk.dtb				\
-	socfpga_stratix10_socdk.dtb
 
 dtb-$(CONFIG_TARGET_DRA7XX_EVM) += dra72-evm.dtb dra7-evm.dtb	\
 	dra72-evm-revc.dtb dra71-evm.dtb dra76-evm.dtb
@@ -650,43 +479,6 @@ dtb-$(CONFIG_ARCH_IMXRT) += imxrt1050-evk.dtb \
 	imxrt1020-evk.dtb \
 	imxrt1170-evk.dtb \
 
-dtb-$(CONFIG_RCAR_GEN2) += \
-	r8a7790-lager-u-boot.dtb \
-	r8a7790-stout-u-boot.dtb \
-	r8a7791-koelsch-u-boot.dtb \
-	r8a7791-porter-u-boot.dtb \
-	r8a7792-blanche-u-boot.dtb \
-	r8a7793-gose-u-boot.dtb \
-	r8a7794-alt-u-boot.dtb \
-	r8a7794-silk-u-boot.dtb
-
-dtb-$(CONFIG_RCAR_GEN3) += \
-	r8a774a1-beacon-rzg2m-kit.dtb \
-	r8a774b1-beacon-rzg2n-kit.dtb \
-	r8a774e1-beacon-rzg2h-kit.dtb \
-	r8a774a1-hihope-rzg2m-u-boot.dtb \
-	r8a774b1-hihope-rzg2n-u-boot.dtb \
-	r8a774c0-ek874-u-boot.dtb \
-	r8a774e1-hihope-rzg2h-u-boot.dtb \
-	r8a77950-ulcb-u-boot.dtb \
-	r8a77950-salvator-x-u-boot.dtb \
-	r8a77960-ulcb-u-boot.dtb \
-	r8a77960-salvator-x-u-boot.dtb \
-	r8a77965-ulcb-u-boot.dtb \
-	r8a77965-salvator-x-u-boot.dtb \
-	r8a77970-eagle-u-boot.dtb \
-	r8a77970-v3msk-u-boot.dtb \
-	r8a77980-condor-u-boot.dtb \
-	r8a77980-v3hsk-u-boot.dtb \
-	r8a77990-ebisu-u-boot.dtb \
-	r8a77995-draak-u-boot.dtb
-
-dtb-$(CONFIG_RCAR_GEN4) += \
-	r8a779a0-falcon-u-boot.dtb \
-	r8a779f0-spider-u-boot.dtb \
-	r8a779g0-white-hawk-u-boot.dtb \
-	r8a779h0-gray-hawk-u-boot.dtb
-
 dtb-$(CONFIG_TARGET_RZG2L) += \
 	r9a07g044l2-smarc.dts
 
@@ -704,42 +496,6 @@ dtb-$(CONFIG_ARCH_KEYSTONE) += keystone-k2hk-evm.dtb \
 	keystone-k2g-generic.dtb \
 	keystone-k2g-ice.dtb
 
-dtb-$(CONFIG_TARGET_AT91SAM9261EK) += at91sam9261ek.dtb
-
-dtb-$(CONFIG_TARGET_PM9261) += at91sam9261ek.dtb
-
-dtb-$(CONFIG_TARGET_PM9263) += at91sam9263ek.dtb
-
-dtb-$(CONFIG_TARGET_MEESC) += at91sam9263ek.dtb
-
-dtb-$(CONFIG_TARGET_AT91SAM9263EK) += at91sam9263ek.dtb
-
-dtb-$(CONFIG_TARGET_AT91SAM9RLEK) += at91sam9rlek.dtb
-
-dtb-$(CONFIG_TARGET_AT91SAM9260EK) += \
-	at91sam9260ek.dtb	\
-	at91sam9g20ek.dtb	\
-	at91sam9g20ek_2mmc.dtb
-
-dtb-$(CONFIG_TARGET_AT91SAM9M10G45EK) += at91sam9m10g45ek.dtb
-
-dtb-$(CONFIG_TARGET_PM9G45) += at91sam9m10g45ek.dtb
-
-dtb-$(CONFIG_TARGET_AT91SAM9X5EK) += \
-	at91sam9g15ek.dtb	\
-	at91sam9g25ek.dtb	\
-	at91sam9g35ek.dtb	\
-	at91sam9x25ek.dtb	\
-	at91sam9x35ek.dtb
-
-dtb-$(CONFIG_TARGET_SAM9X60EK) += sam9x60ek.dtb
-
-dtb-$(CONFIG_TARGET_SAM9X60_CURIOSITY) += at91-sam9x60_curiosity.dtb
-
-dtb-$(CONFIG_TARGET_AT91SAM9N12EK) += at91sam9n12ek.dtb
-
-dtb-$(CONFIG_TARGET_GARDENA_SMART_GATEWAY_AT91SAM) += \
-	at91sam9g25-gardena-smart-gateway.dtb
 
 dtb-$(CONFIG_TARGET_ETHERNUT5) += ethernut5.dtb
 
@@ -773,30 +529,6 @@ dtb-$(CONFIG_TARGET_OMAP4_SDP4430) += \
 	omap4-sdp.dtb \
 	omap4-sdp-es23plus.dtb
 
-dtb-$(CONFIG_TARGET_SAMA7G5EK) += \
-	at91-sama7g5ek.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D2_PTC_EK) += \
-	at91-sama5d2_ptc_ek.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D2_XPLAINED) += \
-	at91-sama5d2_xplained.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D27_SOM1_EK) += \
-	at91-sama5d27_som1_ek.dtb   \
-	at91-sama5d27_giantboard.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D27_WLSOM1_EK) += \
-	at91-sama5d27_wlsom1_ek.dtb
-
-dtb-$(CONFIG_TARGET_KSTR_SAMA5D27) += \
-	at91-kstr-sama5d27.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D2_ICP) += \
-	at91-sama5d2_icp.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D29_CURIOSITY) += \
-	at91-sama5d29_curiosity.dtb
 
 dtb-$(CONFIG_TARGET_SAMA5D3XEK) += \
 	sama5d31ek.dtb \
@@ -805,18 +537,6 @@ dtb-$(CONFIG_TARGET_SAMA5D3XEK) += \
 	sama5d35ek.dtb \
 	sama5d36ek.dtb \
 	sama5d36ek_cmp.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D3_XPLAINED) += \
-	at91-sama5d3_xplained.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D4EK) += \
-	at91-sama5d4ek.dtb
-
-dtb-$(CONFIG_TARGET_SAMA5D4_XPLAINED) += \
-	at91-sama5d4_xplained.dtb
-
-dtb-$(CONFIG_TARGET_VINCO) += \
-	at91-vinco.dtb
 
 dtb-$(CONFIG_ARCH_STI) += stih410-b2260.dtb
 
