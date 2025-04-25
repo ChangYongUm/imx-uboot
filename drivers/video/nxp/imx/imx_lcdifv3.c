@@ -268,7 +268,7 @@ static int lcdifv3_of_get_timings(struct udevice *dev,
 
 	ret = video_link_get_display_timings(timings);
 	if (ret) {
-		printf("fail to get display timings\n");
+		printf("\n");
 		return ret;
 	}
 
