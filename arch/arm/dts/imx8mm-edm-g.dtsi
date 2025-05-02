@@ -20,8 +20,8 @@
 
 / {
 	chosen {
-		bootargs = "console=ttymxc0,115200 earlycon=ec_imx6q,0x30860000,115200";
-		stdout-patch = &uart1;
+		bootargs = "console=ttymxc1,115200 earlycon=ec_imx6q,0x30860000,115200";
+		stdout-patch = &uart2;
 	};
 
 	regulators {
@@ -61,21 +61,22 @@
 };
 
 &iomuxc {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_hog_1>;
+	//pinctrl-names = "default";
+	//pinctrl-0 = <&pinctrl_hog_1>;
 
 	imx8mm-edm-g {
-		pinctrl_hog_1: hoggrp-1 {
-			fsl,pins = <
-				MX8MM_IOMUXC_GPIO1_IO08_GPIO1_IO8		0x19
-			>;
-		};
-
 		pinctrl_fec_pwr_en: fec_pwr_en_irqgrp {
 			fsl,pins = <
 				MX8MM_IOMUXC_SAI1_RXFS_GPIO4_IO0   0x19
 			>;
 		};
+
+		// Bluetooth device wake-up
+		pinctrl_pmic: pmicirq {
+			fsl,pins = <
+				MX8MM_IOMUXC_GPIO1_IO03_GPIO1_IO3		0x41
+			>;
+		};		
 
 		pinctrl_fec1: fec1grp {
 			fsl,pins = <
@@ -113,7 +114,7 @@
 
 		pinctrl_i2c3: i2c3grp {
 			fsl,pins = <
-				MX8MM_IOMUXC_I2C3_SCL_I2C3_SCL			0x400001c3
+				MX8MM_IOMUXC_I2C3_SCL_I2C3_SCL			0x400019C3
 				MX8MM_IOMUXC_I2C3_SDA_I2C3_SDA			0x400001c3
 			>;
 		};
@@ -125,16 +126,32 @@
 			>;
 		};
 
-		pinctrl_pmic: pmicirq {
-			fsl,pins = <
-				MX8MM_IOMUXC_GPIO1_IO03_GPIO1_IO3		0x41
-			>;
-		};
 
 		pinctrl_uart1: uart1grp {
 			fsl,pins = <
 				MX8MM_IOMUXC_SAI2_RXFS_UART1_DCE_TX	0x140
 				MX8MM_IOMUXC_SAI2_RXC_UART1_DCE_RX	0x140
+			>;
+		};
+
+		pinctrl_uart2: uart2grp {
+			fsl,pins = <
+				MX8MM_IOMUXC_SAI3_TXC_UART2_DCE_TX	0x140
+				MX8MM_IOMUXC_SAI3_TXFS_UART2_DCE_RX	0x140
+			>;
+		};
+
+		pinctrl_uart3: uart3grp {
+			fsl,pins = <
+				MX8MM_IOMUXC_UART3_RXD_UART3_DCE_RX	0x140
+				MX8MM_IOMUXC_UART3_TXD_UART3_DCE_TX	0x140
+			>;
+		};
+
+		pinctrl_uart4: uart4grp {
+			fsl,pins = <
+				MX8MM_IOMUXC_UART4_RXD_UART4_DCE_RX	0x140
+				MX8MM_IOMUXC_UART4_TXD_UART4_DCE_TX	0x140
 			>;
 		};
 
@@ -271,24 +288,28 @@
 			>;
 		};
 
+		//connected inside in the module
 		pinctrl_mipi_dsi_en: mipi_dsi_en {
 			fsl,pins = <
 				MX8MM_IOMUXC_NAND_DATA03_GPIO3_IO9      0x16   /* enable pin of sn65dsi84 */
 			>;
 		};
 
+		//LVDS0_BL_EN (GPIO1_IO12)
 		pinctrl_lvds0_backlight_pwr: lvds0_bl_pwrgrp {
 			fsl,pins = <
 				MX8MM_IOMUXC_GPIO1_IO12_GPIO1_IO12		0x19
 			>;
 		};
 
+		//LVDS0_VDDEN (GPIO1_IO07)
 		pinctrl_lvds0_pwr: lvds0_pwrgrp {
 			fsl,pins = <
 				MX8MM_IOMUXC_GPIO1_IO07_GPIO1_IO7		0x19
 			>;
 		};
 
+		//LVDS0_BL_PWM2 (GPIO1_IO07)
 		pinctrl_lvds_bl_pwm: lvds_bl_pwngrp{
 			fsl,pins = <
 				MX8MM_IOMUXC_SPDIF_RX_GPIO5_IO4			0x19
@@ -370,9 +391,17 @@
 	};
 };
 
-&uart1 {  /* A53 console, UART_A */
+&uart1 { 
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart1>;
+	status = "okay";
+};
+
+&uart2 { /* A53 console, UART_A */
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart2>;
+	assigned-clocks = <&clk IMX8MM_CLK_UART2>;
+	assigned-clock-parents = <&clk IMX8MM_SYS_PLL1_80M>;
 	status = "okay";
 };
 
@@ -427,6 +456,8 @@
 */
 
 &gpio1 {
+	status = "okay";
+
 	lvds-pwr-on {
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_lvds0_pwr>;
@@ -441,17 +472,18 @@
 		gpio-hog;
 		gpios = <12 GPIO_ACTIVE_HIGH>;
 		output-high;
-	};
+	};	
 };
 
 &gpio5 {
+	status = "okay";
 	bl-pwm-on {
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_lvds_bl_pwm>;
 		gpio-hog;
 		gpios = <4 GPIO_ACTIVE_HIGH>;
 		output-high;
-	};
+	};	
 };
 
 &mipi_dsi {
@@ -474,10 +506,6 @@
 };
 
 &lcdif {
-	enable_polarity_low;
-	/delete-property/ assigned-clocks;
-	/delete-property/ assigned-clock-parents;
-	/delete-property/ assigned-clock-rates;
 	display = <&display0>;
 	status = "okay";
 
@@ -485,5 +513,4 @@
 		bits-per-pixel = <24>;
 		bus-width = <24>;
 	};
-
 };

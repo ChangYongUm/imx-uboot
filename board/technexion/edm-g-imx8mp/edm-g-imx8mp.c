@@ -369,8 +369,9 @@ void setup_camera(void)
 #define FSL_SIP_CONFIG_GPC_PM_DOMAIN	0x3
 int board_init(void)
 {
-
-	setup_wifi();
+	printf("Kernel Version : 6.6.36 (Curiosis.Co.Ltd) \n");
+	//setup_wifi();
+	
 	setup_touch();
 	setup_camera();
 

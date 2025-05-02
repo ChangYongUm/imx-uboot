@@ -34,6 +34,7 @@
 #include <vxworks.h>
 #include <asm/cache.h>
 #include <video_link.h>
+#include <asm/mach-imx/gpio.h>
 
 #ifdef CONFIG_ARMV7_NONSEC
 #include <asm/armv7.h>
@@ -52,6 +53,13 @@ static struct tag *params;
 __weak void board_quiesce_devices(void)
 {
 }
+
+void gpio_lcd_power_off(void)
+{
+	gpio_direction_output(IMX_GPIO_NR(0, 12), 0);  //LVDS0_BL_EN
+	gpio_direction_output(IMX_GPIO_NR(0, 7), 0); //pinctrl_lvds0_pwr
+}	
+
 
 /**
  * announce_and_cleanup() - Print message and prepare for kernel boot
@@ -84,6 +92,8 @@ static void announce_and_cleanup(int fake)
 #endif
 
 	board_quiesce_devices();
+
+	gpio_lcd_power_off(); //2025.02.19
 
 	printf("\nStarting kernel ...%s\n\n", fake ?
 		"(fake run for tracing)" : "");

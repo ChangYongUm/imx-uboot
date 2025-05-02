@@ -304,7 +304,9 @@ int board_init(void)
 {
 	struct arm_smccc_res res;
 
-	setup_wifi();
+	printf("Kernel Version : 6.6.36 (Curiosis.Co.Ltd) \n");
+
+	//setup_wifi();
 	setup_touch();
 	if (!IS_ENABLED(CONFIG_DM_ETH))
 		if (IS_ENABLED(CONFIG_FEC_MXC))
