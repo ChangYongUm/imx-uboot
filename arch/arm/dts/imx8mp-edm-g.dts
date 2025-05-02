@@ -25,12 +25,6 @@
 		      <0x1 0x00000000 0 0xc0000000>;
 	};
 
-	pcie0_refclk: pcie0-refclk {
-		compatible = "fixed-clock";
-			#clock-cells = <0>;
-			clock-frequency = <100000000>;
-	};
-
 	reg_usb1_host_vbus: regulator-usb1-vbus {
 		compatible = "regulator-fixed";
 		regulator-name = "usb1_host_vbus";
@@ -51,18 +45,6 @@
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
 		gpio = <&gpio1 11 GPIO_ACTIVE_HIGH>;
-		enable-active-high;
-		regulator-always-on;
-	};
-
-	reg_pcie0: regulator-pcie {
-		compatible = "regulator-fixed";
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_pcie0_reg>;
-		regulator-name = "MPCIE_3V3";
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		gpio = <&gpio2 6 GPIO_ACTIVE_HIGH>;
 		enable-active-high;
 		regulator-always-on;
 	};
@@ -94,6 +76,88 @@
 		>;
 		clock-frequency = <100000>;
 		status = "okay";
+	};
+
+
+	reg_lvds_pwr: regulator_lvdspwr {
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_lvds0_pwr>;
+		compatible = "regulator-fixed";
+		regulator-name = "lvds0_vdden";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		gpio = <&gpio4 12 GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+		status = "okay";
+	};
+
+	reg_lvds_backlight_pwr: regulator_lvdsblpwr {
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_lvds0_backlight_pwr>;
+		compatible = "regulator-fixed";
+		regulator-name = "lvds0_bl_en";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		gpio = <&gpio4 14 GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+		regulator-always-on;
+		status = "okay";
+	};
+
+	lvds_backlight: lvds_backlight {
+		compatible = "pwm-backlight";
+		pwms = <&pwm2 0 50000 0>;
+		brightness-levels = <0 36 72 108 144 180 216 255>;
+		default-brightness-level = <6>;
+		status = "okay";
+	};
+
+	lvds0_panel {
+		compatible = "vxt,vl10112880", "panel-lvds";
+		backlight = <&lvds_backlight>;
+		power-supply = <&reg_lvds_pwr>;
+
+		data-mapping = "vesa-24";
+		height-mm = <161>;
+		width-mm = <243>;
+
+		panel-timing {
+			clock-frequency = <71100000>;
+			hactive = <1280>;
+			vactive = <800>;
+			hback-porch = <40>;
+			hfront-porch = <40>;
+			vback-porch = <10>;
+			vfront-porch = <3>;
+			hsync-len = <80>;
+			vsync-len = <10>;
+			de-active = <1>;
+		};
+
+		port {
+			panel_lvds_in: endpoint {
+				remote-endpoint = <&lvds_out>;
+			};
+		};
+	};
+};
+
+
+&ldb {
+	status = "okay";
+
+	lvds-channel@0 {
+		fsl,data-mapping = "spwg";
+		fsl,data-width = <24>;
+		status = "okay";
+		
+		port@1 {
+			reg = <1>;
+
+			lvds_out: endpoint {
+				remote-endpoint = <&panel_lvds_in>;
+			};
+		};
 	};
 };
 
@@ -274,20 +338,6 @@
 			line-name = "INFO_TRIG_IN2";
 		};
 	};
-
-	adv_bridge: adv7535@3d {
-		compatible = "adi,adv7533";
-		reg = <0x3d>;
-		adi,addr-cec = <0x3c>;
-		adi,dsi-lanes = <4>;
-		status = "okay";
-
-		port {
-			adv7535_from_dsim: endpoint {
-				remote-endpoint = <&dsim_to_adv7535>;
-			};
-		};
-	};
 };
 
 &i2c4 {
@@ -314,37 +364,6 @@
 	status = "okay";
 };
 
-&mipi_dsi {
-	status = "okay";
-
-	port@1 {
-		dsim_to_adv7535: endpoint {
-			remote-endpoint = <&adv7535_from_dsim>;
-		};
-	};
-};
-
-&pcie_phy {
-	fsl,refclk-pad-mode = <IMX8_PCIE_REFCLK_PAD_INPUT>;
-	clocks = <&pcie0_refclk>;
-	clock-names = "ref";
-	status = "okay";
-};
-
-&pcie {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_pcie0>;
-	reset-gpio = <&gpio2 7 GPIO_ACTIVE_LOW>;
-	clocks = <&clk IMX8MP_CLK_HSIO_ROOT>,
-		 <&clk IMX8MP_CLK_PCIE_ROOT>,
-		 <&clk IMX8MP_CLK_HSIO_AXI>;
-	clock-names = "pcie", "pcie_aux", "pcie_bus";
-	assigned-clocks = <&clk IMX8MP_CLK_PCIE_AUX>;
-	assigned-clock-rates = <10000000>;
-	assigned-clock-parents = <&clk IMX8MP_SYS_PLL2_50M>;
-	vpcie-supply = <&reg_pcie0>;
-	status = "okay";
-};
 
 &snvs_pwrkey {
 	status = "okay";
