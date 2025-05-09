@@ -121,6 +121,7 @@
 		compatible = "auo,g156han023", "panel-lvds";
 		backlight = <&lvds_backlight>;
 		power-supply = <&reg_lvds_pwr>;
+		status = "okay";
         
         data-mapping = "vesa-24";
         width-mm = <364>;
