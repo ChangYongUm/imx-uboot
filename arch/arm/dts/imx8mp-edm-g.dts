@@ -113,30 +113,29 @@
                              57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74
                              75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92
                              93 94 95 96 97 98 99 100>;
-        default-brightness-level = <80>;
+        default-brightness-level = <90>;
 		status = "okay";
 	};
 
 	lvds0_panel {
-		compatible = "panel-lvds";
+		compatible = "auo,g156han02_3", "panel-lvds";
 		backlight = <&lvds_backlight>;
 		power-supply = <&reg_lvds_pwr>;
         
         data-mapping = "vesa-24";
-        width-mm = <344>;
-        height-mm = <194>;
+        width-mm = <364>;
+        height-mm = <216>;
 
 		panel-timing {
-			clock-frequency = <148500000>;
+			clock-frequency = <144000000>;
 			hactive = <1920>;
 			vactive = <1080>;
-			hback-porch = <40>;
+			hback-porch = <60>;
 			hfront-porch = <40>;
 			vback-porch = <10>;
-			vfront-porch = <3>;
-			hsync-len = <80>;
-			vsync-len = <10>;
-			de-active = <1>;
+			vfront-porch = <8>;
+			hsync-len = <10>;
+			vsync-len = <5>;
 		};
 
 		port {
@@ -150,10 +149,12 @@
 
 &ldb {
 	status = "okay";
+	split-mode;
+    dual-channel;
 
 	lvds-channel@0 {
-		//fsl,data-mapping = "spwg";
-		fsl,data-mapping = "jeida";
+		reg = <0>;
+		fsl,data-mapping = "spwg";
 		fsl,data-width = <24>;
 		status = "okay";
 		
@@ -165,6 +166,13 @@
 			};
 		};
 	};
+
+    lvds-channel@1 {
+        reg = <1>;
+        fsl,data-mapping = "spwg";
+        fsl,data-width = <24>;
+        status = "okay";
+    };
 };
 
 &ldb_phy {
